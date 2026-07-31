@@ -1,4 +1,8 @@
-## ⚠️ Next versions are available only on the [GitHub Releases](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/releases) page ⚠️
+## pkg-nec releases
+
+pkg-nec publishes maintained releases as `@pkg-nec/fork-ts-checker-webpack-plugin`.
+See the [repository releases](https://github.com/pkg-nec/fork-ts-checker-webpack-plugin/releases)
+for releases from this fork. Historical entries below refer to the upstream project.
 
 # [1.3.0-beta.1](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/compare/v1.2.0...v1.3.0-beta.1@beta) (2019-04-30)
 

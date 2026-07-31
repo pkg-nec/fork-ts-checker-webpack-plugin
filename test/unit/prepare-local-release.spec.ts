@@ -37,4 +37,17 @@ describe('replacePluginVersion', () => {
       'Expected exactly one {{VERSION}} marker'
     );
   });
+
+  it('declares the public pkg-nec package identity', () => {
+    const packageJson = require('../../package.json');
+    expect(packageJson.name).toBe('@pkg-nec/fork-ts-checker-webpack-plugin');
+    expect(packageJson.version).toBe('9.1.0');
+    expect(packageJson.publishConfig).toEqual({ access: 'public' });
+    expect(packageJson.repository.url).toBe(
+      'https://github.com/pkg-nec/fork-ts-checker-webpack-plugin.git'
+    );
+    expect(packageJson.bugs.url).toBe(
+      'https://github.com/pkg-nec/fork-ts-checker-webpack-plugin/issues'
+    );
+  });
 });
