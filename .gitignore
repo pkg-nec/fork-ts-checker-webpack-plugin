@@ -21,3 +21,6 @@ node_modules
 
 # Mac OS
 .DS_Store
+
+# yarn cache optimization file
+.yarn/install-state.gz
