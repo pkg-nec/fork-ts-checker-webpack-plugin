@@ -63,7 +63,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: test/e2e/__locks__
-          key: ${{ runner.os }}-locks
+          key: ${{ runner.os }}-node-${{ matrix.node }}-e2e-locks-${{ hashFiles('package.json', 'yarn.lock', 'test/e2e/**/*.spec.ts', 'test/e2e/**/package.json', 'test/e2e/jest.setup.ts') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ matrix.node }}-e2e-locks-
 
       - name: Install dependencies
         run: yarn install --immutable
