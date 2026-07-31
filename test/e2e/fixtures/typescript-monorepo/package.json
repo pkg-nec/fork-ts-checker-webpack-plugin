@@ -1,6 +1,7 @@
 {
   "name": "typescript-monorepo",
   "version": "1.0.0",
+  "packageManager": "yarn@4.18.0",
   "license": "MIT",
   "private": true,
   "workspaces": [
