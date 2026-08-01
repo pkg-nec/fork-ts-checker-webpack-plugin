@@ -60,7 +60,7 @@ jobs:
         run: corepack enable
 
       - name: Locks cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: test/e2e/__locks__
           key: ${{ runner.os }}-node-${{ matrix.node }}-e2e-locks-${{ hashFiles('package.json', 'yarn.lock', 'test/e2e/**/*.spec.ts', 'test/e2e/**/package.json', 'test/e2e/jest.setup.ts') }}
