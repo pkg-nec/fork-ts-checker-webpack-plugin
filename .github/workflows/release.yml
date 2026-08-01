@@ -1,0 +1,50 @@
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    name: npm publish
+    runs-on: ubuntu-latest
+    environment: npm-publish
+    steps:
+      - name: Checkout the released tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+          cache: yarn
+
+      - name: Install latest npm 11
+        run: npm install --global npm@^11
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Verify release tag and package version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: node scripts/assert-release-tag-version.js "$RELEASE_TAG"
+
+      - name: Prepare local release artifact
+        run: yarn prepare:local-release
+
+      - name: Run unit tests
+        run: yarn test:unit
+
+      - name: Publish with npm provenance
+        run: npm publish --access public --provenance
