@@ -20,11 +20,11 @@ describe('local release package', () => {
       version: string;
     };
 
-    expect(packageJson.version).toBe('9.1.0');
+    expect(packageJson.version).toBe('9.1.1');
     expect(global.localReleasePackage).toEqual({
-      tarballPath: expect.stringMatching(/pkg-nec-fork-ts-checker-webpack-plugin-9\.1\.0\.tgz$/),
+      tarballPath: expect.stringMatching(/pkg-nec-fork-ts-checker-webpack-plugin-9\.1\.1\.tgz$/),
       name: '@pkg-nec/fork-ts-checker-webpack-plugin',
-      version: '9.1.0',
+      version: '9.1.1',
     });
     expect(global.localReleasePackage.name).toBe(packageJson.name);
     expect(global.localReleasePackage.version).toBe(packageJson.version);

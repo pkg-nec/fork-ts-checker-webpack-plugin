@@ -13,19 +13,19 @@ describe('replacePluginVersion', () => {
     directory = fs.mkdtempSync(path.join(os.tmpdir(), 'fork-ts-checker-release-'));
     packageJsonPath = path.join(directory, 'package.json');
     pluginPath = path.join(directory, 'plugin.js');
-    fs.writeFileSync(packageJsonPath, JSON.stringify({ version: '9.1.0' }));
+    fs.writeFileSync(packageJsonPath, JSON.stringify({ version: '9.1.1' }));
     fs.writeFileSync(pluginPath, "Plugin.version = '{{VERSION}}';\n");
   });
 
   afterEach(() => fs.rmSync(directory, { recursive: true, force: true }));
 
   it('uses the version from package metadata', () => {
-    expect(replacePluginVersion({ packageJsonPath, pluginPath })).toBe('9.1.0');
-    expect(fs.readFileSync(pluginPath, 'utf8')).toBe("Plugin.version = '9.1.0';\n");
+    expect(replacePluginVersion({ packageJsonPath, pluginPath })).toBe('9.1.1');
+    expect(fs.readFileSync(pluginPath, 'utf8')).toBe("Plugin.version = '9.1.1';\n");
   });
 
   it('requires exactly one marker', () => {
-    fs.writeFileSync(pluginPath, "Plugin.version = '9.1.0';\n");
+    fs.writeFileSync(pluginPath, "Plugin.version = '9.1.1';\n");
     expect(() => replacePluginVersion({ packageJsonPath, pluginPath })).toThrow(
       'Expected exactly one {{VERSION}} marker'
     );
@@ -41,7 +41,7 @@ describe('replacePluginVersion', () => {
   it('declares the public pkg-nec package identity', () => {
     const packageJson = require('../../package.json');
     expect(packageJson.name).toBe('@pkg-nec/fork-ts-checker-webpack-plugin');
-    expect(packageJson.version).toBe('9.1.0');
+    expect(packageJson.version).toBe('9.1.1');
     expect(packageJson.publishConfig).toEqual({ access: 'public' });
     expect(packageJson.repository.url).toBe(
       'https://github.com/pkg-nec/fork-ts-checker-webpack-plugin.git'

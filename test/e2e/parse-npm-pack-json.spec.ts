@@ -4,8 +4,8 @@ describe('parseNpmPackJson', () => {
   it('ignores lifecycle output before npm pack metadata', () => {
     expect(
       parseNpmPackJson(
-        'husky - Git hooks installed\n[\n  {\n    "filename": "pkg-nec-fork-ts-checker-webpack-plugin-9.1.0.tgz"\n  }\n]'
+        'husky - Git hooks installed\n[\n  {\n    "filename": "pkg-nec-fork-ts-checker-webpack-plugin-9.1.1.tgz"\n  }\n]'
       )
-    ).toEqual([{ filename: 'pkg-nec-fork-ts-checker-webpack-plugin-9.1.0.tgz' }]);
+    ).toEqual([{ filename: 'pkg-nec-fork-ts-checker-webpack-plugin-9.1.1.tgz' }]);
   });
 });

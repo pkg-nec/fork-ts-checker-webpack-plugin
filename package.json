@@ -1,6 +1,6 @@
 {
   "name": "@pkg-nec/fork-ts-checker-webpack-plugin",
-  "version": "9.1.0",
+  "version": "9.1.1",
   "description": "Runs typescript type checker and linter on separate process.",
   "keywords": [
     "webpack",
