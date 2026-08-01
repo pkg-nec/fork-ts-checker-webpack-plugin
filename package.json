@@ -1,6 +1,6 @@
 {
-  "name": "fork-ts-checker-webpack-plugin",
-  "version": "0.0.0-semantic-release",
+  "name": "@pkg-nec/fork-ts-checker-webpack-plugin",
+  "version": "9.1.0",
   "description": "Runs typescript type checker and linter on separate process.",
   "keywords": [
     "webpack",
@@ -13,11 +13,14 @@
     "fast"
   ],
   "bugs": {
-    "url": "https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/issues"
+    "url": "https://github.com/pkg-nec/fork-ts-checker-webpack-plugin/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/TypeStrong/fork-ts-checker-webpack-plugin.git"
+    "url": "https://github.com/pkg-nec/fork-ts-checker-webpack-plugin.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "license": "MIT",
   "author": "Piotr Oleś <piotrek.oles@gmail.com>",
@@ -35,7 +38,8 @@
     "lint": "cross-env eslint ./src ./test --ext .ts",
     "test": "yarn build && yarn test:unit && yarn test:e2e",
     "test:unit": "cross-env jest --config=test/unit/jest.config.js",
-    "test:e2e": "npm pack && cross-env YARN_ENABLE_IMMUTABLE_INSTALLS=false jest --config=test/e2e/jest.config.js --ci -i -b",
+    "prepare:local-release": "yarn build && node scripts/prepare-local-release.js",
+    "test:e2e": "yarn prepare:local-release && npm pack && cross-env YARN_ENABLE_IMMUTABLE_INSTALLS=false jest --config=test/e2e/jest.config.js --ci -i -b",
     "commit": "cross-env git-cz",
     "semantic-release": "semantic-release",
     "prepare": "husky install"

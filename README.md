@@ -4,14 +4,18 @@
 <h1>Fork TS Checker Webpack Plugin</h1>
 <p>Webpack plugin that runs TypeScript type checker on a separate process.</p>
 
-[![npm version](https://img.shields.io/npm/v/fork-ts-checker-webpack-plugin.svg)](https://www.npmjs.com/package/fork-ts-checker-webpack-plugin)
-[![build status](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/workflows/CI/CD/badge.svg?branch=main&event=push)](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/actions?query=branch%3Amain+event%3Apush)
-[![downloads](http://img.shields.io/npm/dm/fork-ts-checker-webpack-plugin.svg)](https://npmjs.org/package/fork-ts-checker-webpack-plugin)
+[![npm version](https://img.shields.io/npm/v/@pkg-nec%2Ffork-ts-checker-webpack-plugin.svg)](https://www.npmjs.com/package/@pkg-nec%2Ffork-ts-checker-webpack-plugin)
+[![build status](https://github.com/pkg-nec/fork-ts-checker-webpack-plugin/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/pkg-nec/fork-ts-checker-webpack-plugin/actions/workflows/ci.yml)
+[![downloads](http://img.shields.io/npm/dm/@pkg-nec%2Ffork-ts-checker-webpack-plugin.svg)](https://npmjs.org/package/@pkg-nec%2Ffork-ts-checker-webpack-plugin)
 [![commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 </div>
+
+> This is an independently maintained pkg-nec fork of TypeStrong's
+> `fork-ts-checker-webpack-plugin`, focused on security and dependency fixes.
+> Install and import the scoped package name shown below.
 
 ## Features
 
@@ -30,20 +34,22 @@ This plugin requires **Node.js >=14.0.0+**, **Webpack ^5.11.0**, **TypeScript ^3
 
 ```sh
 # with npm
-npm install --save-dev fork-ts-checker-webpack-plugin
+npm install --save-dev @pkg-nec/fork-ts-checker-webpack-plugin
 
 # with yarn
-yarn add --dev fork-ts-checker-webpack-plugin
+yarn add --dev @pkg-nec/fork-ts-checker-webpack-plugin
 
 # with pnpm
-pnpm add -D fork-ts-checker-webpack-plugin
+pnpm add -D @pkg-nec/fork-ts-checker-webpack-plugin
 ```
+
+The dependency and import specifier is `@pkg-nec/fork-ts-checker-webpack-plugin`, but existing `fork-ts-checker` configuration remains valid.
 
 The minimal webpack config (with [ts-loader](https://github.com/TypeStrong/ts-loader))
 
 ```js
 // webpack.config.js
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('@pkg-nec/fork-ts-checker-webpack-plugin');
 
 module.exports = {
   context: __dirname, // to automatically find tsconfig.json
@@ -185,7 +191,7 @@ When we call this method with a [webpack compiler instance](https://webpack.js.o
 
 ```js
 // ./src/webpack/MyWebpackPlugin.js
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('@pkg-nec/fork-ts-checker-webpack-plugin');
 
 class MyWebpackPlugin {
   apply(compiler) {
@@ -205,7 +211,7 @@ class MyWebpackPlugin {
 module.exports = MyWebpackPlugin;
 
 // webpack.config.js
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('@pkg-nec/fork-ts-checker-webpack-plugin');
 const MyWebpackPlugin = require('./src/webpack/MyWebpackPlugin');
 
 module.exports = {
